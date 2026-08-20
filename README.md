@@ -5,7 +5,6 @@
   <img src="https://img.shields.io/badge/Sensor-MPU6050%206--DOF-emerald?style=for-the-badge" alt="MPU6050">
   <img src="https://img.shields.io/badge/Display-SH1106%20%2F%20SSD1306%20OLED-purple?style=for-the-badge" alt="OLED">
   <img src="https://img.shields.io/badge/Language-C%2B%2B17%20%2F%20Arduino-orange?style=for-the-badge&logo=c%2B%2B" alt="C++17">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
 </p>
 
 ---
@@ -52,24 +51,47 @@ Connect the MPU6050 (and optional OLED display) to the NodeMCU / ESP8266 board v
 ## 🧮 Mathematical & Biomechanical Foundations
 
 ### 1. Mahony AHRS Quaternion Fusion
-Gravity vector $\vec{v} = [v_x, v_y, v_z]^T$ is computed from the quaternion $\mathbf{q} = [q_1, q_2, q_3, q_4]^T$:
-$$\begin{aligned}
-v_x &= 2(q_2 q_4 - q_1 q_3) \\
-v_y &= 2(q_1 q_2 + q_3 q_4) \\
-v_z &= q_1^2 - q_2^2 - q_3^2 + q_4^2
-\end{aligned}$$
-Linear dynamic acceleration is isolated: $\vec{a}_{\text{linear}} = (\vec{a}_{\text{raw}} - \vec{v}) \cdot 9.80665\,\text{m/s}^2$.
+
+The estimated gravity vector $\vec{v} = [v_x, v_y, v_z]^T$ is computed from the orientation quaternion $\mathbf{q} = [q_1, q_2, q_3, q_4]^T$:
+
+$$
+v_x = 2(q_2 q_4 - q_1 q_3)
+$$
+
+$$
+v_y = 2(q_1 q_2 + q_3 q_4)
+$$
+
+$$
+v_z = q_1^2 - q_2^2 - q_3^2 + q_4^2
+$$
+
+Linear dynamic acceleration is isolated:
+
+$$
+\vec{a}_{\text{linear}} = (\vec{a}_{\text{raw}} - \vec{v}) \cdot 9.80665 \text{ m/s}^2
+$$
 
 ### 2. Hydrodynamic Drag & Velocity Decay
+
 During the glide and recovery phase, deceleration is modeled via fluid drag equations:
-$$F_d = \frac{1}{2} \rho C_d A v^2 \quad \implies \quad a_{\text{drag}} = \frac{F_d}{m_{\text{swimmer}}}$$
-where $\rho = 997\,\text{kg/m}^3$, $C_d \approx 0.60$, and $A \approx 0.09\,\text{m}^2$.
+
+$$
+F_d = \frac{1}{2} \rho C_d A v^2 \implies a_{\text{drag}} = \frac{F_d}{m_{\text{swimmer}}}
+$$
+
+where $\rho = 997 \text{ kg/m}^3$, $C_d \approx 0.60$, and $A \approx 0.09 \text{ m}^2$.
 
 ### 3. Cycloid vs Quarter-Arc Motion Metric
+
 The wrist trajectory ratio is derived from pitch and roll angular spans:
-$$r_{\text{ellipse}} = \frac{\min(\Delta\theta_{\text{pitch}}, \Delta\theta_{\text{roll}})}{\max(\Delta\theta_{\text{pitch}}, \Delta\theta_{\text{roll}})}$$
-- **Swimming**: Closed-loop 3D cycloid path ($r_{\text{ellipse}} \in [0.4, 0.8]$).
-- **Walking**: Planar 1D pendulum swing ($r_{\text{ellipse}} < 0.25$).
+
+$$
+r_{\text{ellipse}} = \frac{\min(\Delta\theta_{\text{pitch}}, \Delta\theta_{\text{roll}})}{\max(\Delta\theta_{\text{pitch}}, \Delta\theta_{\text{roll}})}
+$$
+
+- **Swimming**: Closed-loop 3D cycloid path ($r_{\text{ellipse}} \in [0.4, 0.8]$)
+- **Walking**: Planar 1D pendulum swing ($r_{\text{ellipse}} < 0.25$)
 
 ---
 
@@ -145,9 +167,3 @@ SwimBand/
 │   └── package.json
 └── README.md                     # Documentation & Getting Started Guide
 ```
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** — feel free to modify, distribute, and integrate it into your own open-source or commercial wearable swimming projects.
