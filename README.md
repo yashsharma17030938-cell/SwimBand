@@ -26,7 +26,7 @@ SwimBand Pro features a **Zero-App Dual Interface**:
 - **🛡️ False-Stroke Rejection (Cycloid vs Quarter-Arc vs Walking)**: Distinguishes between 3D cycloid hand rotations and 1D quarter-arc walking swings, ensuring zero false stroke counts during resting, walking, cheering, or fidgeting.
 - **🔄 Wall Push-Off & Lap Split Timing**: Detects high-G wall push-offs to automatically time individual pool lengths, best splits, and lap counts.
 - **🏊 In-Pool Dynamic Calibration**: Single-tap 25m/50m calibration button on the Web UI to auto-tune stroke length coefficients to individual swimmer biomechanics.
-- **📊 Real-Time SWOLF & Quality Scoring**: Continuously estimates swimming efficiency ($\text{SWOLF} = \text{Time}_{\text{pool}} + \text{Strokes}_{\text{pool}}$) and stroke consistency.
+- **📊 Real-Time SWOLF & Quality Scoring**: Continuously estimates swimming efficiency (SWOLF = Time per Length + Strokes per Length) and stroke consistency.
 - **💾 Flash-Safe LittleFS Circular Logging**: Stream-copy log rotation protects ESP8266 RAM and prevents flash memory exhaustion.
 - **📶 Zero External Dependency**: Operates completely offline without cloud servers, external apps, or active internet connections.
 
