@@ -1,0 +1,18 @@
+{
+  "name": "swimband-receiver-server",
+  "version": "2.0.0",
+  "description": "Companion telemetry ingestion and UDP clock synchronization server for SwimBand Pro",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "esp8266",
+    "mpu6050",
+    "telemetry",
+    "swimming-tracker",
+    "biomechanics"
+  ],
+  "author": "SwimBand Open Source Community",
+  "license": "MIT"
+}
